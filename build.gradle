@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    testImplementation 'io.cucumber:cucumber-java:7.33.0'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.33.0'
+
+    implementation 'org.seleniumhq.selenium:selenium-java:4.39.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:6.3.3'
+
+    testImplementation 'org.junit.platform:junit-platform-suite:1.10.2'
+
+    // === Allure ===
+    testImplementation 'io.qameta.allure:allure-cucumber7-jvm:2.27.0'
+    testImplementation 'io.qameta.allure:allure-junit-platform:2.27.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+allure {
+    version = '2.27.0'
+    autoconfigure = true
+    aspectjweaver = true
+}
+
+//Linea que hace que el reporte se genere automaticamente despues de correr los tests, sin comando extra.
+test.finalizedBy allureReport
+
+
+//Cofiguracion automatica para que allure limpie los reportes viejos antes de generar uno nuevo
+allureReport {
+    clean = true
+}
