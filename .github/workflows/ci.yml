@@ -108,7 +108,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: build/reports/allure-report/allureReport
-          keep_files: false
+          keep_files: true
 
       # --------------------
       # Cleanup old branches
