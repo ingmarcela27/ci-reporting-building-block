@@ -271,6 +271,14 @@ jobs:
           fi
 
 
+          if [ "$RESPONSE" -ge 400 ]; then
+            echo "⚠️ Failed to send Google Chat notification. HTTP code: $RESPONSE"
+            cat /tmp/gchat_response.txt
+          else
+            echo "✅ Google Chat notification sent successfully."
+          fi
+
+
           if [ "$RESPONSE" != "200" ]; then
             echo "⚠️ Google Chat notification failed (HTTP $RESPONSE)"
           else
