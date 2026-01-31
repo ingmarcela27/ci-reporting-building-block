@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop
   pull_request:
   workflow_dispatch:
 
@@ -215,9 +214,16 @@ jobs:
           BRANCH_NAME="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
 
           # --------------------
-          # Report URL
+          # Report URL + Button text
+          # main => GitHub Pages, others => GitHub Actions run
           # --------------------
-          REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allureReport/"
+          if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
+            REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allureReport/"
+            BUTTON_TEXT="📄 View Report (Pages)"
+          else
+            REPORT_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            BUTTON_TEXT="🔎 View Run (Actions)"
+          fi
 
           # --------------------
           # Payload JSON
@@ -231,7 +237,7 @@ jobs:
                   "header": {
                     "title": "Selenium CI – ${STATUS_EMOJI} ${STATUS_TEXT}",
                     "subtitle": "Branch: ${BRANCH_NAME}",
-                    "imageUrl": "https://avatars.githubusercontent.com/${{ github.repository_owner }}"
+                    "imageUrl": "https://fonts.gstatic.com/s/i/materialiconsoutlined/fact_check/v14/24px.svg"
                   },
                   "sections": [
                     {
@@ -254,7 +260,7 @@ jobs:
                           "buttonList": {
                             "buttons": [
                               {
-                                "text": "📄 View Allure Report",
+                                "text": "${BUTTON_TEXT}",
                                 "onClick": {"openLink": {"url": "${REPORT_URL}"}}
                               }
                             ]
@@ -295,4 +301,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ${{ env.REPORT_DIR }}
           destination_dir: allureReport
-          keep_files: true
+          keep_files: false
