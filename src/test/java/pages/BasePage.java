@@ -1,3 +1,11 @@
+/**
+ * Clase base para todos los Page Objects.
+ *
+ * Centraliza el acceso al WebDriver y proporciona métodos comunes
+ * de interacción con la UI, evitando duplicación de código
+ * y facilitando el mantenimiento.
+ */
+
 package pages;
 
 import org.openqa.selenium.*;

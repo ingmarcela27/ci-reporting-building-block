@@ -1,3 +1,15 @@
+/**
+ * Fábrica responsable de crear y configurar instancias de WebDriver para las pruebas.
+ *
+ * - Centraliza la configuración de ChromeDriver (uso de WebDriverManager y ChromeOptions).
+ * - Activa opciones específicas para ejecuciones en CI (modo headless, flags de estabilidad y tamaño de ventana)
+ *   cuando la variable de entorno `CI` está en "true".
+ * - Devuelve una nueva instancia de `ChromeDriver` preparada para ejecución local o en CI.
+ *
+ * Beneficios: desacopla la creación del driver del resto del framework, facilita cambios globales
+ * de configuración y permite extender la fábrica para soportar otros navegadores o ejecuciones remotas.
+ */
+
 package driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;

@@ -1,3 +1,11 @@
+/**
+ * Hooks de Cucumber que controlan el ciclo de vida de cada escenario.
+ *
+ * Esta clase actúa como el puente entre Cucumber y Selenium,
+ * asegurando que el WebDriver se inicialice antes de cada escenario
+ * y se liberen los recursos al finalizar.
+ */
+
 package hooks;
 
 import config.AllureEnvironmentWriter;
@@ -14,6 +22,11 @@ public class Hooks {
 
     private static boolean environmentWritten = false;
 
+    /**
+     * Se ejecuta antes de cada escenario.
+     * Inicializa el entorno de ejecución y crea el WebDriver.
+     */
+
     @Before
     public void beforeScenario() {
         DriverManager.setDriver(DriverFactory.createDriver());
@@ -23,6 +36,12 @@ public class Hooks {
             environmentWritten = true;
         }
     }
+
+    /**
+     * Se ejecuta después de cada escenario.
+     * Captura evidencia en caso de fallo y cierra el navegador,
+     * garantizando la independencia entre escenarios.
+     */
 
     @After
     public void afterScenario(Scenario scenario) {

@@ -10,6 +10,9 @@ public class PaginaRegistro extends BasePage {
     }
 
     public void waitUntilCheckoutIsLoaded() {
-        wait.until(ExpectedConditions.urlContains("checkout"));
+        wait.until(ExpectedConditions.urlContains("payment"));
     }
+    // linea correcta: public void waitUntilCheckoutIsLoaded() {
+    //        wait.until(ExpectedConditions.urlContains("checkout"));
+    //    }
 }

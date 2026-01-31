@@ -1,3 +1,10 @@
+/**
+ * Page Object que representa la página principal de la aplicación.
+ *
+ * Contiene únicamente localizadores y acciones propias de esta página.
+ * No incluye validaciones ni lógica de test.
+ */
+
 package pages;
 
 import config.EnvironmentManager;

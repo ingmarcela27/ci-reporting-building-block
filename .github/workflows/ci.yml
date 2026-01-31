@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write # necesario para gh-pages
 
 env:
   RESULTS_DIR: build/allure-results
@@ -86,9 +86,9 @@ jobs:
       - name: Grant gradlew permission
         run: chmod +x gradlew
 
-      # --------------------
-      # Load Allure history
-      # --------------------
+      # -------------------------------
+      # Load Allure history - Opcional
+      # -------------------------------
       - name: Load Allure history
         run: |
           git fetch origin gh-pages || true
