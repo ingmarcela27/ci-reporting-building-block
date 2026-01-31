@@ -1,3 +1,10 @@
+/**
+ * Gestiona la instancia activa de WebDriver.
+ *
+ * Utiliza ThreadLocal para garantizar seguridad en ejecuciones
+ * paralelas y evitar conflictos entre escenarios.
+ */
+
 package driver;
 
 import org.openqa.selenium.WebDriver;
@@ -22,17 +29,3 @@ public class DriverManager {
         }
     }
 }
-
-
-
-
-
-
-//NotasLocal (ver navegador): Ejecutar gradle test -Dheadless=false
-//       CI (sin ver navegador): Ejecutar gradle test -Dheadless=true
-//comando para correr en ambiente dev: > ./gradlew test -Denv=dev
-//comando para correr en ambiente dev: > ./gradlew test -Denv=qa
-//comando ejecutar test pero limpiando antes: ./gradlew clean test
-// ./gradlew allureServe -genera el reporte inmediato
-// ./gradlew clean test -Dheadless=false
-// ./gradlew clean test "-Dcucumber.filter.tags=@Courses" -Dheadless=false.

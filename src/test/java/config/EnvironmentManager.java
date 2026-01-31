@@ -1,3 +1,11 @@
+/**
+ * Gestiona la configuración del entorno de ejecución.
+ *
+ * Esta clase permite ejecutar los mismos tests en distintos entornos
+ * (dev, qa, etc.) sin modificar el código fuente, cargando dinámicamente
+ * los archivos de propiedades correspondientes.
+ */
+
 package config;
 
 import java.io.InputStream;

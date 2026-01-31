@@ -1,3 +1,11 @@
+/**
+ * Step definitions de Cucumber.
+ *
+ * Esta clase traduce los pasos definidos en lenguaje Gherkin
+ * en llamadas a los Page Objects, manteniendo los escenarios
+ * legibles y desacoplados de Selenium.
+ */
+
 package steps;
 
 import io.cucumber.java.en.*;

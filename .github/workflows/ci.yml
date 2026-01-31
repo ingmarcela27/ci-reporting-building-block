@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write # necesario para gh-pages
 
 env:
   RESULTS_DIR: build/allure-results
@@ -86,9 +86,9 @@ jobs:
       - name: Grant gradlew permission
         run: chmod +x gradlew
 
-      # --------------------
-      # Load Allure history
-      # --------------------
+      # -------------------------------
+      # Load Allure history - Opcional
+      # -------------------------------
       - name: Load Allure history
         run: |
           git fetch origin gh-pages || true
@@ -152,6 +152,15 @@ jobs:
         with:
           name: allure-report
           path: ${{ env.REPORT_DIR }}
+
+      # ✅ DEBUG: verificar qué quedó realmente en REPORT_DIR
+      - name: Debug report folder
+        run: |
+          echo "REPORT_DIR=$REPORT_DIR"
+          ls -la "$REPORT_DIR" || true
+          echo "Searching for index.html..."
+          find "$REPORT_DIR" -maxdepth 4 -name "index.html" -print || true   
+          
 
       # --------------------
       # Notify Google Chat
