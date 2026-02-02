@@ -156,6 +156,13 @@ jobs:
           name: allure-report
           path: ${{ env.REPORT_DIR }}
 
+      - name: Validate Allure report exists
+        run: |
+          if [ ! -f "${REPORT_DIR}/index.html" ]; then
+            echo "❌ No index.html found in REPORT_DIR: ${REPORT_DIR}"
+            ls -la "${REPORT_DIR}" || true
+            exit 1
+          fi
 
       # --------------------
       # Notify Google Chat
