@@ -1,0 +1,5 @@
+Scenario: Courses are presented correctly to potential customers
+Status: FAILED
+Thread: ForkJoinPool-2-worker-3
+CI: true
+Browser: Chrome
